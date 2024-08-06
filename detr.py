@@ -1,17 +1,23 @@
-from transformers import DetrImageProcessor, DetrForObjectDetection
+#from transformers import DetrImageProcessor, DetrForObjectDetection
 import torch
 from PIL import Image
 import requests
 import tempfile
 
 from ray import serve
+# Load model directly
+from transformers import AutoImageProcessor, AutoModelForObjectDetection
+
 
 
 @serve.deployment()
 class ObjectDetection:
     def __init__(self):
-        self.processor = DetrImageProcessor.from_pretrained("facebook/detr-resnet-50", revision="no_timm")
-        self.model = DetrForObjectDetection.from_pretrained("facebook/detr-resnet-50", revision="no_timm")
+        self.processor = AutoImageProcessor.from_pretrained("facebook/detr-resnet-50")
+        self.model = AutoModelForObjectDetection.from_pretrained("facebook/detr-resnet-50")
+
+        #self.processor = DetrImageProcessor.from_pretrained("facebook/detr-resnet-50", revision="no_timm")
+        #self.model = DetrForObjectDetection.from_pretrained("facebook/detr-resnet-50", revision="no_timm")
 
     # Users can send HTTP requests with an image. The classifier will return
     # the top prediction.
