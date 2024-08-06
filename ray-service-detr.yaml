@@ -14,6 +14,7 @@ spec:
             - transformers==4.34.1
             - pillow
             - requests
+            - python-multipart
   rayClusterConfig:
     rayVersion: '2.9.0' # Should match the Ray version in the image of the containers
     ######################headGroupSpecs#################################
