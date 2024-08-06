@@ -8,7 +8,7 @@ spec:
       - name: detr
         import_path: detr:app
         runtime_env:
-          working_dir: "https://github.com/flostahl-aws/ray-serve/archive/e0a3c93bb80595572c216dcedfdaf617b87433a5.zip"
+          working_dir: "https://github.com/flostahl-aws/ray-serve/archive/39a0653aa2d125590cc79790931727dfa2879666.zip"
           pip: 
             - torch
             - transformers==4.34.1
