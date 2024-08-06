@@ -44,7 +44,7 @@ class ObjectDetection:
 
         for score, label, box in zip(results["scores"], results["labels"], results["boxes"]):
             box = [round(i, 2) for i in box.tolist()]
-            result_list.append(f"Detected {model.config.id2label[label.item()]} with confidence {round(score.item(), 3)} at location {box}")
+            result_list.append(f"Detected {self.model.config.id2label[label.item()]} with confidence {round(score.item(), 3)} at location {box}")
 
         return result_list
 
