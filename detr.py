@@ -34,11 +34,11 @@ class ObjectDetection:
             image = Image.open(temp_file_path)
             #img = image.load_img(temp_file_path, target_size=(224, 224))
 
-        inputs = processor(images=image, return_tensors="pt")
-        outputs = model(**inputs)
+        inputs = self.processor(images=image, return_tensors="pt")
+        outputs = self.model(**inputs)
 
         target_sizes = torch.tensor([image.size[::-1]])
-        results = processor.post_process_object_detection(outputs, target_sizes=target_sizes, threshold=0.9)[0]
+        results = self.processor.post_process_object_detection(outputs, target_sizes=target_sizes, threshold=0.9)[0]
         
         result_list = []
 
